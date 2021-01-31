@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.customDatePickerWidth{
+ width: 38%;
+} 
+
+.customDatePickerWidth > div.react-datepicker-wrapper, 
+.customDatePickerWidth > div > div.react-datepicker__input-container
+.customDatePickerWidth > div > div.react-datepicker__input-container input {
+   width: 100%;
+}
+
+.datePickerInputStyle{
+  width: -webkit-fill-available;
+  height: 33px;
+}
