@@ -16,11 +16,11 @@ function App() {
           <Route path="/mytree">
             <MyTree />
           </Route>
-          <Route path="/login">
-            <Login />
+          <Route path="/signIn">
+            <SignIn />
           </Route>
           <Route path="/">
-            <SignIn />
+            <Login />
           </Route>
         </Switch>
       </Router>

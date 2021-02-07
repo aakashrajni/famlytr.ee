@@ -2,12 +2,14 @@
 const FtPrimaryButton = (props) => {
 
     const primaryButtonStyle = {
-        width: 125,
-        height: 45,
+        width: props.width || 125,
+        height: props.height || 45,
         padding: '10 25',
-        fontSize: 18
+        fontSize: props.fontSize || 18,
+        textAlign: 'center'
     }
-    return <input style={primaryButtonStyle} value={props.value} onClick={(e)=> props.createUser} type={props.type}/>
+    
+    return <input id={props.id} disabled={props.disabled} style={primaryButtonStyle} value={props.value} type={props.type} onClick={props.clickMethod}/>
 }
 
 export default FtPrimaryButton;
