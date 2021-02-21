@@ -20,14 +20,14 @@ const Login = (props) => {
     useEffect(() =>{
         updateSendCodeBtnState(true);
         updateVerifyBtnState(true);
-        if(mobileNumber.length > 9 && mobileNumber.length < 12)
+        if(mobileNumber.length === 10)
             updateSendCodeBtnState(false);
         if(otpCode.length === 6)
             updateVerifyBtnState(false);
     }, [mobileNumber.length, otpCode.length])
 
     const sendCodes = () => {
-        if(mobileNumber.length > 9 && mobileNumber.length < 12)
+        if(mobileNumber.length === 10)
         sentOTP(countryCode+mobileNumber, updateAlertMsg);
     }
 
@@ -50,7 +50,7 @@ const Login = (props) => {
                         showFirst={['IN', 'US']}
                     />
                     
-                    <FtInputBox key="mobileNumber" value={mobileNumber} placeholder="Mobile Number" width="60%" updateValue={updateMobileNumber} pattern="[0-9]{10,11}" autocomplete="tel-national"/>
+                    <FtInputBox key="mobileNumber" value={mobileNumber} placeholder="Mobile Number" width="60%" updateValue={updateMobileNumber} pattern="[0-9]{10}" autocomplete="tel-national"/>
                 </div> 
                 <div style={{width: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly'}}>
                     <FtInputBox key="otpCode" value={otpCode} placeholder="Enter OTP" width="48%" updateValue={updateOtpCode} />

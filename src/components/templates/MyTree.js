@@ -14,7 +14,7 @@ const MyTree = (props) => {
     },[])
 
     return (
-    <div style={{
+    <div className="tree" style={{
         width: '100%',
         height: '100vh',
         padding: 25,
@@ -22,10 +22,10 @@ const MyTree = (props) => {
     }}>
         <ul style={{ width: '100%', height: '100vh'}}>
             <li style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                    <FtTreeNode userId={famTree.fatherId} relation="Father"/>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                    <FtTreeNode userId={famTree.father.id} tempUserId={famTree.father.mobile} relation="father" relHead="Father"/>
                     +
-                    <FtTreeNode userId={famTree.motherId} relation="Mother"/>
+                    <FtTreeNode userId={famTree.mother.id} tempUserId={famTree.mother.mobile} relation="mother" relHead="Mother"/>
                 </div>
                 <ul>
                     <li style={{ paddingTop: 25 }}>

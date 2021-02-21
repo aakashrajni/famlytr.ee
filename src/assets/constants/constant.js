@@ -29,10 +29,20 @@ export const defaultUser = {
 }
 
 export const defaultFamTree = {
-    "myId": 0,
-    "partnerId": 0,
-    "fatherId": 0,
-    "motherId": 0
+    "children": {
+    },
+    "partner": {
+        "id" : 0,
+        "mobile": 0 
+    },
+    "father": {
+        "id" : 0,
+        "mobile": 0 
+    },
+    "mother": {
+        "id" : 0,
+        "mobile": 0 
+    }
 }
 
 export const userId = localStorage.getItem('userId');
