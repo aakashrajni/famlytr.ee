@@ -10,6 +10,7 @@ const FtCoupleTreeNode = ({userId}) => {
     
     useEffect(() => {
         function handleFamTree(famTree){
+            console.log(famTree)
             setFamTree(famTree);
         }
         getFamilyTree(userId,handleFamTree);
@@ -17,11 +18,18 @@ const FtCoupleTreeNode = ({userId}) => {
 
     return(
         <>
-            <FtTreeNode userId={userId} />
-            {
-                famTree.partner.id !== 0 && 
-                <FtTreeNode userId={famTree.partner.id} />
-            }
+            <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}>
+                <FtTreeNode userId={userId} />
+                {
+                    famTree.partner.id !== 0 && 
+                    <FtTreeNode userId={famTree.partner.id} />
+                }
+            </div>
             {
                 famTree.children && <ChildrenTreeNode children={Object.keys(famTree.children)} />
             }

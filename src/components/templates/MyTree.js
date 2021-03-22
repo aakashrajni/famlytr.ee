@@ -15,6 +15,7 @@ const MyTree = (props) => {
             console.log(treeHeadId)
             setTreeHeadId(treeHeadId)
             if(userId === treeHeadId){
+                console.log("inside")
                 getFamilyTree(userId,setFamTree)
             }
         })
@@ -34,6 +35,12 @@ const MyTree = (props) => {
                     <FtCoupleTreeNode userId={treeHeadId}>
                     </FtCoupleTreeNode>
                 </li>
+                {
+                    treeHeadId === userId && (famTree.father.id !== 0) &&
+                    <li>
+                    <FtTreeNode userId={-1} />
+                    </li>
+                }
             </ul>
         </AddFamily>
     </div>
@@ -49,7 +56,7 @@ export const AddFamily = ({famTree,children,treeHeadId, userId}) => {
                 <div style={{
                     display: 'flex',
                     flexDirection: 'row',
-                    justifyContent: 'flex-start',
+                    justifyContent: 'center',
                     alignItems: 'center'
                 }}>
                     <FtTreeNode userId={famTree.father.id} tempUserId={famTree.father.mobile} relation="father" relHead="Father"/>
@@ -62,7 +69,9 @@ export const AddFamily = ({famTree,children,treeHeadId, userId}) => {
     )
 
     return (
-        <></>
+        <>
+            {children}
+        </>
     )
 }
 

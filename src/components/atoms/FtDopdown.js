@@ -7,7 +7,7 @@ const FtDropdown = (props) => {
             {/* <option value={props.value}>{props.placeholder}</option> */}
             {
                 props.data.map((ele) => {
-                    return <option value={ele.value}>{ele.name}</option>
+                    return <option key={ele.value} value={ele.value}>{ele.name}</option>
                 })
             }
         </select>
