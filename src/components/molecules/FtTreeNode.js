@@ -1,7 +1,7 @@
 import { gender } from "../../assets/constants/constant";
 import { getUserDetails, getTempUserDetails } from '../firebaseFiles/firebase';
 import { useEffect, useState } from 'react';
-import { defaultUser } from '../../assets/constants/constant';
+import { defaultUser, localUserId, colors } from '../../assets/constants/constant';
 
 const FtTreeNode = (props) => {
 
@@ -38,11 +38,11 @@ const FtTreeNode = (props) => {
                 alignItems: 'stretch',
                 border: 2,
                 borderStyle: 'solid',
-                borderColor: 'black'
+                borderColor: colors.primaryTextColor
             }}>
                 <div onClick={addFatherMother} style={{
                     fontSize: 12,
-                    color: 'black',
+                    color: colors.primaryTextColor,
                     fontWeight: 'bold',
                     flex: 1,
                     display: 'flex',
@@ -63,11 +63,11 @@ const FtTreeNode = (props) => {
                 alignItems: 'stretch',
                 border: 2,
                 borderStyle: 'solid',
-                borderColor: 'black'
+                borderColor: colors.primaryTextColor
             }}>
                 <div onClick={inviteSiblings} style={{
                     fontSize: 12,
-                    color: 'black',
+                    color: colors.primaryTextColor,
                     fontWeight: 'bold',
                     flex: 1,
                     display: 'flex',
@@ -129,7 +129,7 @@ const FtTreeNode = (props) => {
                             border: 1,
                             borderStyle: 'solid',
                             borderColor: StatusColor,
-                            borderRadius: 5,
+                            borderRadius: 6,
                             backgroundColor: StatusColor
                         }}></div>
                     </div>
@@ -150,13 +150,13 @@ const FtTreeNode = (props) => {
             borderColor: borderColor,
             position: 'relative'
         }}>
-            <div style={{
+            { localUserId === props.userId && <div style={{
                 padding: 5,
                 position: 'absolute',
                 top: 0,
                 right: 0,
-
-            }}>+</div>
+                color: colors.primaryTextColor
+            }}>+</div> }
             <div style={{
                 position: 'absolute',
                 bottom: 0,
@@ -195,7 +195,7 @@ const FtTreeNode = (props) => {
                         border: 1,
                         borderStyle: 'solid',
                         borderColor: StatusColor,
-                        borderRadius: 5,
+                        borderRadius: 6,
                         backgroundColor: StatusColor
                     }}></div>
                 </div>

@@ -1,3 +1,9 @@
+import logo from "../img/famlyTreeLogo.png"
+import { ReactComponent as Home} from "../img/home.svg"
+import { ReactComponent as Bell} from "../img/bell.svg"
+import { ReactComponent as User} from "../img/user.svg"
+
+
 export const gender = {
     'male': {
         'name': 'Male',
@@ -12,6 +18,21 @@ export const gender = {
         'color': 'gold'
     }
 }
+
+export const genderObj = [
+    {
+        'name': 'Male',
+        'value': 'male'
+    },
+    {
+        'name': 'Female',
+        'value': 'female'
+    },
+    {
+        'name': 'Other',
+        'value': 'other'
+    }
+]
 
 export const defaultUser = {
     "firstName": "loading...",
@@ -45,4 +66,19 @@ export const defaultFamTree = {
     }
 }
 
-export const userId = localStorage.getItem('userId');
+export const colors = {
+    bgColor: "#292c35",
+    primaryTextColor: "#f9f9fb",
+    primaryColor: "#0654f4",
+    secondaryColor: "#f63c3d",
+    black: "#121212"
+}
+
+export const img = {
+    logo: logo,
+    home: Home,
+    bell: Bell,
+    user: User
+}
+
+export const localUserId = localStorage.getItem('userId');

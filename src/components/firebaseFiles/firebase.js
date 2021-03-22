@@ -178,6 +178,21 @@ export const getFamilyTree = async (userId, setFamTree) => {
     }
 }
 
+export const getMyTree = async(userId) => {
+    const familyTreeSnapshot = await database.ref('users/'+userId+'/familyTree').once('value');
+    if(familyTreeSnapshot.exists()){
+        let famTree = familyTreeSnapshot.val();
+        let hasFather = (famTree.father.id !== 0 && famTree.father.id !== -10)?true:false;
+        console.log("hasF",hasFather,famTree.father.id)
+        if(hasFather){
+            if(famTree.father.id !== 0)
+             return await getMyTree(famTree.father.id)
+        }
+        return userId
+    }
+
+}
+
 export const sentOTP = (mobileNumber, updateAlertMsg) => {
     const appVerifier = window.recaptchaVerifier;
     auth.signInWithPhoneNumber(mobileNumber, appVerifier)

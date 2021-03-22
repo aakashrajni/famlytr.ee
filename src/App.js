@@ -2,6 +2,7 @@ import './App.css';
 import MyTree from './components/templates/MyTree';
 import SignIn from './components/templates/SignIn';
 import Login from './components/templates/Login';
+import AppSkeleton from './components/templates/AppSkeleton';
 import AddParent from './components/templates/AddParent';
 import {
   BrowserRouter as Router,
@@ -15,7 +16,9 @@ function App() {
       <Router>
         <Switch>
           <Route path="/mytree">
-            <MyTree />
+            <AppSkeleton selected="Home">
+              <MyTree />
+            </AppSkeleton>
           </Route>
           <Route path="/signIn">
             <SignIn />

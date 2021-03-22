@@ -5,8 +5,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import FtHeading  from '../atoms/FtHeading';
 import FtInputBox from '../atoms/FtInputBox';
 import FtPrimaryButton from '../atoms/FtPrimaryButton';
+import FtDropdown from '../atoms/FtDopdown';
 // import FtLinkButton from '../atoms/FtLinkButton';
 import { updateUser } from "../firebaseFiles/firebase";
+import {genderObj} from '../../assets/constants/constant'
 
 const SignIn = (props) => {
 
@@ -47,7 +49,7 @@ const SignIn = (props) => {
                 <div className="customDatePickerWidth">
                 <DatePicker className="datePickerInputStyle" dateFormat="dd-MM-yyyy" showMonthDropdown="true" showYearDropdown="true"  placeholderText="Date of Birth" selected={startDate} onChange={date => setStartDate(date)} />
                 </div>
-                <FtInputBox key="gender" value={gender} placeholder="Gender" width="35%" updateValue={updateGender} />
+                <FtDropdown data={genderObj} width="39%" value={gender} placeholder="select gender" updateValue={updateGender}/>
             </div> 
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
                 

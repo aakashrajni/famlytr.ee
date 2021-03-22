@@ -8,7 +8,7 @@ import FtMobInputBox from '../atoms/FtMobInputBox';
 import FtPrimaryButton from '../atoms/FtPrimaryButton';
 // import FtLinkButton from '../atoms/FtLinkButton';
 import { addFather, addMother } from "../firebaseFiles/firebase";
-import { userId } from "../../assets/constants/constant";
+import { localUserId as userId } from "../../assets/constants/constant";
 import {
     useParams
 } from "react-router-dom";

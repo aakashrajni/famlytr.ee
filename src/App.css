@@ -82,12 +82,12 @@
 .tree li::before, .tree li::after{
 	content: '';
 	position: absolute; top: 0; right: 50%;
-	border-top: 3px solid brown;
+	border-top: 3px solid #0654f4;
 	width: 50%; height: 20px;
 }
 .tree li::after{
 	right: auto; left: 50%;
-	border-left: 3px solid brown;
+	border-left: 3px solid #0654f4;
 }
 
 /*We need to remove left-right connectors from elements without 
@@ -106,7 +106,7 @@ right connector from last child*/
 }
 /*Adding back the vertical connector to the last nodes*/
 .tree li:last-child::before{
-	border-right: 3px solid brown;
+	border-right: 3px solid #0654f4;
 	border-radius: 0 5px 0 0;
 	-webkit-border-radius: 0 5px 0 0;
 	-moz-border-radius: 0 5px 0 0;
@@ -121,12 +121,12 @@ right connector from last child*/
 .tree ul ul::before{
 	content: '';
 	position: absolute; top: 0; left: 50%;
-	border-left: 3px solid brown;
+	border-left: 3px solid #0654f4;
 	width: 0; height: 20px;
 }
 
 .tree li a{
-	border: 3px solid brown;
+	border: 3px solid #0654f4;
 	padding: 5px 10px;
 	text-decoration: none;
 	color: #666;
