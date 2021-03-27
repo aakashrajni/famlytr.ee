@@ -1,4 +1,4 @@
-import { getMyTree, getFamilyTree } from '../firebaseFiles/firebase';
+import { getMyTree, getFamilyTree, checkForPartner } from '../firebaseFiles/firebase';
 import { useEffect, useState } from 'react';
 import FtTreeNode from '../molecules/FtTreeNode';
 import FtCoupleTreeNode from "../molecules/FtCoupleTreeNode";
@@ -10,6 +10,9 @@ const MyTree = (props) => {
     const userId = localUserId;
     const [treeHeadId,setTreeHeadId] = useState(userId)
     const [famTree,setFamTree] = useState(defaultFamTree)
+
+    // checkForPartner("h0bAiha8DpRwgKPSH86kSBQ1U082","eFuXcIgTz7aywPw34IowbILwUrB2","mother")
+
     useEffect(() => {
         getMyTree(userId).then((treeHeadId) => {
             console.log(treeHeadId)

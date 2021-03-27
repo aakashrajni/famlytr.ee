@@ -19,8 +19,13 @@ const FtTreeNode = (props) => {
 
     const borderColor = gender[userObj.gender].color;
     const StatusColor = userObj.created?'green':'red';
+    const isPartnerAdded = userObj.familyTree?(userObj.familyTree.partner?(userObj.familyTree.partner.id !== 0?true:false):false):false ;
     const addFatherMother = () => {
         window.location.href = '/parent/'+props.relation
+    }
+    const addPartner = (userGender) => {
+        let oppositeGender = userGender === 'male'?'female':'male'
+        window.location.href = '/partner/'+oppositeGender
     }
     const inviteSiblings = () => {
         window.location.href = '/invite/'+props.relation
@@ -41,7 +46,7 @@ const FtTreeNode = (props) => {
                 borderColor: colors.primaryTextColor
             }}>
                 <div onClick={addFatherMother} style={{
-                    fontSize: 12,
+                    fontSize: 10,
                     color: colors.primaryTextColor,
                     fontWeight: 'bold',
                     flex: 1,
@@ -66,7 +71,7 @@ const FtTreeNode = (props) => {
                 borderColor: colors.primaryTextColor
             }}>
                 <div onClick={inviteSiblings} style={{
-                    fontSize: 12,
+                    fontSize: 10,
                     color: colors.primaryTextColor,
                     fontWeight: 'bold',
                     flex: 1,
@@ -98,7 +103,7 @@ const FtTreeNode = (props) => {
                     width: '100%',
                     height: '40%',
                     display: 'flex',
-                    backgroundColor: '#80808075',
+                    background: 'linear-gradient(transparent,rgba(0,0,0,.5))',
                     flexDirection: 'row',
                     alignItems: 'stretch'
                 }}>
@@ -109,7 +114,7 @@ const FtTreeNode = (props) => {
                         color: 'white',
                         paddingLeft: 5,
                         paddingRight: 5,
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: 'bold',
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
@@ -150,7 +155,7 @@ const FtTreeNode = (props) => {
             borderColor: borderColor,
             position: 'relative'
         }}>
-            { localUserId === props.userId && <div style={{
+            { localUserId === props.userId && !isPartnerAdded && userObj.age > 17 && <div onClick={() => addPartner(userObj.gender)} style={{
                 padding: 5,
                 position: 'absolute',
                 top: 0,
@@ -164,7 +169,7 @@ const FtTreeNode = (props) => {
                 width: '100%',
                 height: '40%',
                 display: 'flex',
-                backgroundColor: '#80808075',
+                background: 'linear-gradient(transparent,rgba(0,0,0,.5))',
                 flexDirection: 'row',
                 alignItems: 'stretch'
             }}>
@@ -175,7 +180,7 @@ const FtTreeNode = (props) => {
                     color: 'white',
                     paddingLeft: 5,
                     paddingRight: 5,
-                    fontSize: 12,
+                    fontSize: 10,
                     fontWeight: 'bold',
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',

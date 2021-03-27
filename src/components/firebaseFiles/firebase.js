@@ -92,13 +92,35 @@ export const createTempUser = async (userObj,addedBy,relationType) => {
     }
 }
 
+export const changeUserToMarried = (userId) => {
+    database.ref('users/'+userId+'/married').set(true);
+}
+
 export const changeUserToParent = (userId) => {
     database.ref('users/'+userId+'/parent').set(true);
     database.ref('users/'+userId+'/married').set(true);
 }
 
+export const addUserToPartner = (userId,partnerId) => {
+    database.ref('users/'+userId+'/familyTree/partner/id/').set(partnerId);
+}
+
 export const addUserToChild = (parentId,childId) => {
     database.ref('users/'+parentId+'/familyTree/children/'+childId).set(true);
+}
+
+export const checkForPartner = async (parentId,childId,partnerType) => {
+    console.log("add partner fn",partnerType,parentId,childId)
+    database.ref('users/'+childId+'/familyTree/'+partnerType+'/id').once('value').then((snapshot)=>{
+        console.log(snapshot,"add partner exist")
+        console.log("add partner val",snapshot.val())
+        database.ref('users/'+parentId+'/familyTree/partner/id').set(snapshot.val())
+    });
+    database.ref('users/'+childId+'/familyTree/'+partnerType+'/mobile').once('value').then((snapshot)=>{
+        console.log(snapshot,"add partner exist")
+        console.log("add partner val",snapshot.val())
+        database.ref('users/'+parentId+'/familyTree/partner/mobile').set(snapshot.val())
+    });
 }
 
 export const addFather = async (userId, userObj) => {
@@ -111,6 +133,7 @@ export const addFather = async (userId, userObj) => {
     }else{
         changeUserToParent(userObj.userId)
         addUserToChild(userObj.userId,userId)
+        checkForPartner(userObj.userId,userId,"mother")
     }
     console.log("added Father");
     window.location.href = "/mytree"
@@ -125,8 +148,24 @@ export const addMother = async (userId, userObj) => {
     }else{
         changeUserToParent(userObj.userId)
         addUserToChild(userObj.userId,userId)
+        checkForPartner(userObj.userId,userId,"father")
     }
     console.log("added Mother");
+    window.location.href = "/mytree"
+}
+
+export const addPartner = async (userId, userObj) => {
+    database.ref('users/'+userId+'/familyTree/partner/mobile').set(userObj.mobileNumber);
+    userObj.userId = await isUserExistByMobNum(userObj.mobileNumber);
+    console.log("addPartner", userObj.userId);
+    database.ref('users/'+userId+'/familyTree/partner/id').set(userObj.userId);
+    if(userObj.userId === -10){
+        await createTempUser(userObj,userId,'partner');
+    }else{
+        changeUserToMarried(userObj.userId)
+        addUserToPartner(userObj.userId,userId)
+    }
+    console.log("added Partner");
     window.location.href = "/mytree"
 }
 

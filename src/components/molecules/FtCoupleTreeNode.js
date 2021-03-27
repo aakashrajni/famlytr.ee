@@ -26,8 +26,12 @@ const FtCoupleTreeNode = ({userId}) => {
             }}>
                 <FtTreeNode userId={userId} />
                 {
-                    famTree.partner.id !== 0 && 
+                    famTree.partner.id !== 0 && famTree.partner.id !== -10 &&
                     <FtTreeNode userId={famTree.partner.id} />
+                }
+                {
+                    famTree.partner.id !== 0 && famTree.partner.id === -10 &&
+                    <FtTreeNode userId={famTree.partner.id} tempUserId={famTree.partner.mobile}/>
                 }
             </div>
             {

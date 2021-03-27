@@ -4,6 +4,7 @@ import SignIn from './components/templates/SignIn';
 import Login from './components/templates/Login';
 import AppSkeleton from './components/templates/AppSkeleton';
 import AddParent from './components/templates/AddParent';
+import AddPartner from './components/templates/AddPartner';
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,8 +27,10 @@ function App() {
           <Route path="/parent/:type">
             <AddParent />
           </Route>
+          <Route path="/partner/:type">
+            <AddPartner />
+          </Route>
           <Route path="/invite/:type">
-            <AddParent />
           </Route>
           <Route path="/">
             <Login />
